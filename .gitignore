@@ -1,1 +1,6 @@
 /target
+
+# ===== Custom Ignores
+
+input.txt
+output.txt
