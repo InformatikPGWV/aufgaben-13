@@ -1,6 +1,6 @@
 [package]
 name = "a2_liste_mittel_ausgabe"
-description = "AstragoDE's Rust Template"
+description = "Aufgabe 2"
 authors = ["AstragoDE <51675359+AstragoDE@users.noreply.github.com>"]
 version = "0.1.0"
 edition = "2021"

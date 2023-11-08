@@ -1,6 +1,6 @@
 [package]
 name = "eva_prinzip"
-description = "Veranschaulichung des EVA Prinzips"
+description = "Aufgabe 1"
 authors = ["AstragoDE <51675359+AstragoDE@users.noreply.github.com>"]
 version = "0.1.0"
 edition = "2021"
