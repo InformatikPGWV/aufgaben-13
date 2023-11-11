@@ -15,6 +15,7 @@ dependencies = [
 name = "a2_liste_mittel_ausgabe"
 version = "0.1.0"
 dependencies = [
+ "iolib",
  "tracing",
  "tracing-subscriber",
 ]

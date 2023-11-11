@@ -13,3 +13,5 @@ readme = "README.md"
 [dependencies]
 tracing = "0.1.39"
 tracing-subscriber = "0.3.17"
+
+iolib = { path = "../iolib" }
