@@ -20,14 +20,14 @@ fn main() {
     input_contents
         .lines()
         .enumerate()
-        .for_each(|(idx, number_as_str)| {
-            debug!("Parsing line {}", idx + 1);
+        .for_each(|(index, number_as_str)| {
+            debug!("Parsing line {}", index + 1);
             match number_as_str.parse::<f64>() {
                 Ok(number) => {
                     debug!("Calculating result");
                     sum += number;
                     product *= number;
-                    if idx == 0 {
+                    if index == 0 {
                         difference = number;
                         quotient = number;
                     } else {

@@ -16,14 +16,23 @@ fn main() {
     debug!("Creating Output Variable");
     let mut output = String::new();
 
-    input_contents.lines().enumerate().for_each(|(idx, line)| {
-        debug!("Parsing line {}", idx + 1);
-        let num: f64 = line.parse().unwrap();
-
-        debug!("Calculating result");
-        let result = num * KONSTANTE;
-        output.push_str(&format!("{}\n", result));
-    });
+    input_contents
+        .lines()
+        .enumerate()
+        .for_each(|(index, number_as_str)| {
+            debug!("Parsing line {}", index + 1);
+            match number_as_str.parse::<f64>() {
+                Ok(number) => {
+                    debug!("Calculating result");
+                    let result = number * KONSTANTE;
+                    output.push_str(&format!("{}\n", result));
+                }
+                Err(e) => {
+                    error!("Failed to parse '{}': {}", number_as_str, e);
+                    output.push_str("Error calculating Result\n");
+                }
+            }
+        });
 
     debug!("Writing output to file");
     iolib::write_file("./output.txt", &output).unwrap();
