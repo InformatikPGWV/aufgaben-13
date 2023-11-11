@@ -2,7 +2,7 @@
 #[allow(unused_imports)]
 use tracing::*;
 
-mod io;
+use iolib;
 
 fn main() {
     const KONSTANTE: f64 = 5.0;
@@ -11,7 +11,7 @@ fn main() {
     tracing_subscriber::fmt::init();
 
     debug!("reading file");
-    let input_contents = io::read_file("./input.txt").unwrap();
+    let input_contents = iolib::read_file("./input.txt").unwrap();
 
     debug!("Creating Output Variable");
     let mut output = String::new();
@@ -26,5 +26,5 @@ fn main() {
     });
 
     debug!("Writing output to file");
-    io::write_file("./output.txt", &output).unwrap();
+    iolib::write_file("./output.txt", &output).unwrap();
 }

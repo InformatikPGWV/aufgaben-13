@@ -2,14 +2,14 @@
 #[allow(unused_imports)]
 use tracing::*;
 
-mod io;
+use iolib;
 
 fn main() {
     // Initialize tracing (Logger)
     tracing_subscriber::fmt::init();
 
     debug!("reading file");
-    let input_contents = io::read_file("./input.txt").unwrap();
+    let input_contents = iolib::read_file("./input.txt").unwrap();
 
     debug!("Preparing result variables");
     let mut sum: f64 = 0.0;
@@ -42,5 +42,5 @@ fn main() {
     output_contents.push_str(&format!("Quotient: {}\n", quotient));
 
     debug!("Writing output to file");
-    io::write_file("./output.txt", &output_contents).unwrap();
+    iolib::write_file("./output.txt", &output_contents).unwrap();
 }

@@ -1,5 +1,5 @@
 [package]
-name = "eva_prinzip"
+name = "a1-spdq"
 description = "Aufgabe 1"
 authors = ["AstragoDE <51675359+AstragoDE@users.noreply.github.com>"]
 version = "0.1.0"
@@ -33,3 +33,4 @@ opt-level = 3
 [dependencies]
 tracing = "0.1.39"
 tracing-subscriber = "0.3.17"
+iolib = { path = "../iolib" }

@@ -1,0 +1,26 @@
+[workspace]
+members = [
+    "iolib",
+    "a1-spdq",
+    "a2-liste-mittel-ausgabe",
+    "a3-mul-mit-konstante",
+]
+
+# ===== PROFILES =====
+
+# Dev Profile
+
+[profile.dev]
+opt-level = 1
+
+[profile.dev.package."*"]
+opt-level = 2
+
+
+# Release Profile
+
+[profile.release]
+opt-level = 3
+
+[profile.release.package."*"]
+opt-level = 3
