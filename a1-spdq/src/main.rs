@@ -17,20 +17,27 @@ fn main() {
     let mut difference: f64 = 0.0;
     let mut quotient: f64 = 0.0;
 
-    input_contents.lines().enumerate().for_each(|(idx, line)| {
-        debug!("Parsing line {}", idx + 1);
-        let num: f64 = line.parse().unwrap();
-        debug!("Calculating result");
-        sum += num;
-        product *= num;
-        if idx == 0 {
-            difference = num;
-            quotient = num;
-        } else {
-            difference -= num;
-            quotient /= num;
-        }
-    });
+    input_contents
+        .lines()
+        .enumerate()
+        .for_each(|(idx, number_as_str)| {
+            debug!("Parsing line {}", idx + 1);
+            match number_as_str.parse::<f64>() {
+                Ok(number) => {
+                    debug!("Calculating result");
+                    sum += number;
+                    product *= number;
+                    if idx == 0 {
+                        difference = number;
+                        quotient = number;
+                    } else {
+                        difference -= number;
+                        quotient /= number;
+                    }
+                }
+                Err(e) => error!("Failed to parse '{}': {}", number_as_str, e),
+            }
+        });
 
     debug!("Generating output");
 

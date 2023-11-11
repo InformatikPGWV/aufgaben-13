@@ -1,7 +1,7 @@
 // Import tracing (Logger)
 #[allow(unused_imports)]
 use tracing::*;
-use tracing_subscriber::field::debug;
+use tracing_subscriber;
 
 fn main() {
     // Initialize tracing (Logger)
@@ -12,10 +12,10 @@ fn main() {
 
     debug!("Convert input to seperate numbers in Vector");
     let mut numbers: Vec<f64> = Vec::new();
-    for number in eingabe.split_ascii_whitespace() {
-        match number.parse::<f64>() {
-            Ok(n) => numbers.push(n),
-            Err(e) => error!("Failed to parse '{}': {}", number, e),
+    for number_as_str in eingabe.split_ascii_whitespace() {
+        match number_as_str.parse::<f64>() {
+            Ok(number) => numbers.push(number),
+            Err(error) => error!("Failed to parse '{}': {}", number_as_str, error),
         }
     }
 
