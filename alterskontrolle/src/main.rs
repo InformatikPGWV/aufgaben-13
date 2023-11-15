@@ -8,7 +8,7 @@ fn main() {
     // Initialize tracing (Logger)
     tracing_subscriber::fmt::init();
 
-    let eingabe = iolib::input("Wie alt bist du?").unwrap();
+    let eingabe = iolib::input("Wie alt bist du?: ").unwrap();
 
     let eingabe = eingabe.parse::<i32>().expect("Alter als Ganzzahl");
 
