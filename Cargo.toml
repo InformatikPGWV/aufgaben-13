@@ -4,6 +4,8 @@ members = [
     "a1-spdq",
     "a2-liste-mittel-ausgabe",
     "a3-mul-mit-konstante",
+    "primzahlen",
+    "alterskontrolle",
 ]
 
 # ===== PROFILES =====
