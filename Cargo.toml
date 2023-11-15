@@ -1,9 +1,9 @@
 [workspace]
 members = [
     "iolib",
-    "2023-11-08-a1-spdq",
-    "2023-11-08-a2-liste-mittel-ausgabe",
-    "2023-11-08-a3-mul-mit-konstante",
+    "a1-spdq",
+    "a2-liste-mittel-ausgabe",
+    "a3-mul-mit-konstante",
 ]
 
 # ===== PROFILES =====
