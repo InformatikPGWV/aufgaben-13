@@ -28,5 +28,5 @@ fn is_prime(number: i32) -> bool {
             return false;
         }
     }
-    true
+    return true;
 }
