@@ -3,6 +3,7 @@ from rich import print
 import os
 
 # === Main Function ===
+
 def main():
     schuelerverzeichnis = []
 
@@ -34,7 +35,6 @@ def main():
 
 
 def schueler_anlegen():
-
     clear_screen()
     print("\n[green]Neuen Schüler anlegen[/green]\n")
     while True:
