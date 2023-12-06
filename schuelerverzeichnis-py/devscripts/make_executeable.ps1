@@ -1,0 +1,1 @@
+poetry run pyinstaller --noconfirm --onefile --console --distpath ./build ./src/main.py
