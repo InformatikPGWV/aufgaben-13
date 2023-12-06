@@ -1,11 +1,13 @@
 from rich import print
 
+import os
 
 # === Main Function ===
 def main():
     schuelerverzeichnis = []
 
     while True:
+        clear_screen()
         print(
             "Bitte Wählen:\n\t1. Schüler anlegen\n\t2. Alle Schüler ausgeben\n\t3. Schüler löschen\n\t4. Programm beenden"
         )
@@ -32,6 +34,8 @@ def main():
 
 
 def schueler_anlegen():
+
+    clear_screen()
     print("\n[green]Neuen Schüler anlegen[/green]\n")
     while True:
         name = input("Name des Schuelers: ").strip()
@@ -72,6 +76,7 @@ def schueler_anlegen():
 
 
 def anzeige_is_raus(liste):
+    clear_screen()
     print("\n[green]Liste aller Schüler:[/green]\n")
     for idx, eintrag in enumerate(liste):
         print(f"Schüler ID: {idx}")
@@ -82,6 +87,7 @@ def anzeige_is_raus(liste):
 
 
 def raus(list):
+    clear_screen()
     while True:
         namen_ausgeben(list)
 
@@ -109,6 +115,9 @@ def namen_ausgeben(list):
     for idx, schueler in enumerate(list):
         print(f"{idx}: {schueler["name"]}")
 
+
+def clear_screen():
+    os.system("cls")
 
 if __name__ == "__main__":
     main()
