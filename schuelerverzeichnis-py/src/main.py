@@ -1,5 +1,5 @@
 from rich import print
-
+import time
 import os
 
 # === Main Function ===
@@ -84,6 +84,7 @@ def anzeige_is_raus(liste):
             print(f"{key}: {value}")
 
         print("\n" + 20 * "=" + "\n")
+    input("Drücken Sie Enter!")
 
 
 def raus(list):
@@ -91,7 +92,7 @@ def raus(list):
     while True:
         namen_ausgeben(list)
 
-        print("Geben Sie die ID des Schülers ein, den Sie löschen möchten.")
+        print("\n[green]Geben Sie die ID des Schülers ein, den Sie löschen möchten.[/green]\n")
         schueler_id = input("> ")
 
         try:
@@ -107,7 +108,8 @@ def raus(list):
                 "[red]Diese ID existiert nicht. Es werden keine Änderungen vorgenommen."
             )
 
-        print("[green]Schüler gelöscht[/green]")
+        print("\n[green]Schüler gelöscht[/green]\n")
+        time.sleep(1)
         return list
 
 
@@ -117,7 +119,10 @@ def namen_ausgeben(list):
 
 
 def clear_screen():
-    os.system("cls")
+    if os.name == "nt": 
+        os.system("cls")
+    else:
+        os.system("clear")
 
 if __name__ == "__main__":
     main()
