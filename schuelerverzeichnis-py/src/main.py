@@ -84,7 +84,7 @@ def anzeige_is_raus(liste):
             print(f"{key}: {value}")
 
         print("\n" + 20 * "=" + "\n")
-    input("Drücken Sie Enter!")
+    input("Drücken Sie Enter um zum Hauptmenü zu gelangen!")
 
 
 def raus(list):
