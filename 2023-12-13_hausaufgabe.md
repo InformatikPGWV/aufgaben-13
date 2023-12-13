@@ -1,6 +1,6 @@
 # Hausaufgabe
 
 - Schuelerverzeichnis Verbesssern
-  - Datei Speichern
-  - Suchfunktion
+  - [x] Datei Speichern
+  - [ ] Suchfunktion
   - ...
