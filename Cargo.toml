@@ -1,11 +1,12 @@
 [workspace]
 members = [
-    "iolib",
-    "eva-maths",
-    "eva-liste-mittel-ausgabe",
-    "eva-mul-mit-konstante",
-    "primzahlen",
     "alterskontrolle",
+    "eva-liste-mittel-ausgabe",
+    "eva-maths",
+    "eva-mul-mit-konstante",
+    "iolib",
+    "primzahlen",
+    "schuelerverzeichnis",
 ]
 
 # ===== PROFILES =====
