@@ -3,8 +3,11 @@ import MyNavigation from '@/components/MyNavigation.vue'
 </script>
 
 <template>
-  <main>
-    <MyNavigation />
-    <h1>HI</h1>
+  <MyNavigation />
+  <main class="px-2">
+    <div class="prose">
+      <h1>Willkommen</h1>
+      <p>Das wird ein Schülerverzeichnis</p>
+    </div>
   </main>
 </template>
