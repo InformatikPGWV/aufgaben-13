@@ -66,7 +66,7 @@ def schueler_anlegen():
 
         # === Joshua Asmus
 
-        if iq < 0 and name != "Joshua Asmus":
+        if iq < 0 and name.lower() != "joshua asmus":
             print('[red]Der IQ darf nur bei "Joshua Asmus" negativ sein.[/red]')
             continue
 
