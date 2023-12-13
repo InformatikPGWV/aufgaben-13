@@ -1,6 +1,7 @@
 from rich import print
 import time
 import os
+import json
 
 # === Main Function ===
 
@@ -10,7 +11,7 @@ def main():
     while True:
         clear_screen()
         print(
-            "Bitte Wählen:\n\t1. Schüler anlegen\n\t2. Alle Schüler ausgeben\n\t3. Schüler löschen\n\t4. Programm beenden"
+            "Bitte Wählen:\n\t1. Schüler anlegen\n\t2. Alle Schüler ausgeben\n\t3. Schüler löschen\n\t4. Programm beenden\n\t5. Daten Speichern\n\t6. Daten Laden"
         )
 
         eingabe = input("> ")
@@ -32,6 +33,12 @@ def main():
 
         if eingabe == 4:
             exit()
+
+        if eingabe == 5:
+            export_students(schuelerverzeichnis)
+        
+        if eingabe == 6:
+            schuelerverzeichnis = import_students()
 
 
 def schueler_anlegen():
@@ -124,6 +131,24 @@ def clear_screen():
         os.system("cls")
     else:
         os.system("clear")
+
+
+def export_students(list):
+    with open("data.json", "w") as file:
+        json.dump(list, file, indent=2)
+    
+    print("[yellow]Daten wurden exportiert.[/yellow]")
+    time.sleep(0.5)
+
+def import_students():
+    data = None
+    with open("data.json", "r") as file:
+        data = json.load(file)
+
+    print("[yellow]Daten wurden geladen.[/yellow]")
+    time.sleep(0.5)
+
+    return data
 
 if __name__ == "__main__":
     main()
