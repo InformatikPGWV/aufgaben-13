@@ -6,7 +6,7 @@ members = [
     "eva-mul-mit-konstante",
     "iolib",
     "primzahlen",
-    "schuelerverzeichnis",
+    "schuelerverzeichnis-gui/src-tauri",
 ]
 
 # ===== PROFILES =====
