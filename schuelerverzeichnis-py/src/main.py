@@ -25,10 +25,10 @@ def main():
             schuelerverzeichnis.append(schueler_anlegen())
 
         if eingabe == 2:
-            anzeige_is_raus(schuelerverzeichnis)
+            schueler_anzeigen(schuelerverzeichnis)
 
         if eingabe == 3:
-            schuelerverzeichnis = raus(schuelerverzeichnis)
+            schuelerverzeichnis = schueler_loeschen(schuelerverzeichnis)
 
         if eingabe == 4:
             exit()
@@ -75,7 +75,7 @@ def schueler_anlegen():
         return {"name": name, "klasse": klasse, "iq": iq}
 
 
-def anzeige_is_raus(liste):
+def schueler_anzeigen(liste):
     clear_screen()
     print("\n[green]Liste aller Schüler:[/green]\n")
     for idx, eintrag in enumerate(liste):
@@ -88,7 +88,7 @@ def anzeige_is_raus(liste):
     input()
 
 
-def raus(list):
+def schueler_loeschen(list):
     clear_screen()
     while True:
         namen_ausgeben(list)
