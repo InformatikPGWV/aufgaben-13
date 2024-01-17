@@ -54,20 +54,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "api"
-version = "0.1.0"
-dependencies = [
- "astralib",
- "open",
- "reqwest",
- "serde",
- "serde_json",
- "tokio",
- "tracing",
- "tracing-subscriber",
-]
-
-[[package]]
 name = "astralib"
 version = "0.1.1"
 source = "git+https://github.com/AstragoDETechnologies/astralib.git#cd9bb283fb9d5ae824180af7608c836dca5018de"
@@ -496,6 +482,20 @@ dependencies = [
  "security-framework",
  "security-framework-sys",
  "tempfile",
+]
+
+[[package]]
+name = "news_api"
+version = "0.1.0"
+dependencies = [
+ "astralib",
+ "open",
+ "reqwest",
+ "serde",
+ "serde_json",
+ "tokio",
+ "tracing",
+ "tracing-subscriber",
 ]
 
 [[package]]

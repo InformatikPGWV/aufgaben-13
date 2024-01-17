@@ -1,5 +1,5 @@
 [package]
-name = "api"
+name = "news_api"
 description = "AstragoDE's Rust Template"
 authors = ["AstragoDE <51675359+AstragoDE@users.noreply.github.com>"]
 version = "0.1.0"

@@ -6,7 +6,7 @@ members = [
     "eva-mul-mit-konstante",
     "iolib",
     "primzahlen",
-    "api-kram",
+    "news-api",
 ]
 
 resolver = "2"
