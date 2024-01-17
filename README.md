@@ -5,6 +5,9 @@ Diese Repository enthält einige kleinere Programme, welche während der Arbeits
 ## Daten & Fakten:
 
 Schuljahr: 2023/2024
+
 Jahrgang: 13
+
 Schüler: Justus Seeck
+
 Lehrer: Herr Gaida

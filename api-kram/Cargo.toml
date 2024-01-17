@@ -11,8 +11,7 @@ readme = "README.md"
 # ===== DEPENDENCIES =====
 
 [dependencies]
-# astralib = { git = "https://github.com/AstragoDETechnologies/astralib.git" }
-reqwest = "0.11.23"
+reqwest = { version = "0.11.23" }
 serde = "1.0.195"
 serde_json = "1.0.111"
 tokio = { version = "1.35.1", features = ["macros"] }
