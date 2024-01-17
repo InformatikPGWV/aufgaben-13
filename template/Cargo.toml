@@ -1,0 +1,36 @@
+[package]
+name = "template"
+description = "AstragoDE's Rust Template"
+authors = ["AstragoDE <51675359+AstragoDE@users.noreply.github.com>"]
+version = "0.1.0"
+edition = "2021"
+readme = "README.md"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+# ===== PROFILES =====
+
+# Dev Profile
+
+[profile.dev]
+opt-level = 1
+
+[profile.dev.package."*"]
+opt-level = 2
+
+
+# Release Profile
+
+[profile.release]
+opt-level = 3
+
+[profile.release.package."*"]
+opt-level = 3
+
+
+# ===== DEPENDENCIES =====
+
+[dependencies]
+# astralib = { git = "https://github.com/AstragoDETechnologies/astralib.git" }
+tracing = "0.1.40"
+tracing-subscriber = "0.3.18"

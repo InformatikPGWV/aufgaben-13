@@ -1,0 +1,16 @@
+hidden = ["target", ".cargo"]
+
+[nix]
+channel = "stable-24_01"
+
+[packager]
+language = "rust"
+
+[packager.features]
+packageSearch = true
+
+[languages.rust]
+pattern = "**/*.rs"
+
+[languages.rust.languageServer]
+start = "rust-analyzer"

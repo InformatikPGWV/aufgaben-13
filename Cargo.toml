@@ -6,7 +6,7 @@ members = [
     "eva-mul-mit-konstante",
     "iolib",
     "primzahlen",
-    "schuelerverzeichnis-gui/src-tauri",
+    "api-kram",
 ]
 
 # ===== PROFILES =====
@@ -14,7 +14,7 @@ members = [
 # Dev Profile
 
 [profile.dev]
-opt-level = 1
+opt-level = 0
 
 [profile.dev.package."*"]
 opt-level = 2
