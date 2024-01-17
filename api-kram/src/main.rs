@@ -37,8 +37,8 @@ async fn main() {
                     .expect("News should be available.")
                     .len()
             {
-                display_news(&data, choice);
-                
+                display_news(&data, choice).await;
+
                 break;
             } else {
                 error!("User selected article that is out of range!");
@@ -52,7 +52,7 @@ async fn main() {
 
 fn display_news_preview(data: &Value) {
     debug!("Extracting news.");
-    let news = &data["news"].as_array().expect("News should be available.");
+    let news = data["news"].as_array().expect("News should be available.");
 
     debug!("Displaying article previews.");
     for (idx, article) in news.iter().enumerate() {
@@ -70,24 +70,52 @@ fn display_news_preview(data: &Value) {
     }
 }
 
-fn display_news(data: &Value, choice: usize) {
-    // TODO: Implement reading inside of console using the details file.
-    let url = &data["news"][choice - 1]["detailsweb"]
-        .as_str()
-        .expect("The URL should be available.");
-    match open::that(url) {
-        Ok(_) => {
-           
-        }
-        Err(error) => {
-            error!("Could not open article: {:#?}", error);
-            println!(
-                "Could not open article automatically. Please visit\n{}",
-                url
-            )
-            
+async fn display_news(data: &Value, choice: usize) {
+    // Old code that opens browser
+    if false {
+        let url = &data["news"][choice - 1]["detailsweb"]
+            .as_str()
+            .expect("The URL should be available.");
+        match open::that(url) {
+            Ok(_) => {}
+            Err(error) => {
+                error!("Could not open article: {:#?}", error);
+                println!(
+                    "Could not open article automatically. Please visit\n{}",
+                    url
+                );
+            }
         }
     }
 
-    
+    let article_url = data["news"][choice - 1]["details"]
+        .as_str()
+        .expect("The URL should be available.");
+
+    let article_response = reqwest::get(article_url)
+        .await
+        .expect("The Request should return a Response.")
+        .text()
+        .await
+        .expect("The Result should contain text.");
+
+    let article: Value =
+        serde_json::from_str(&article_response).expect("The data should be in JSON.");
+
+    let content = article["content"]
+        .as_array()
+        .expect("Content should be available.");
+
+    for segment in content {
+        if segment["type"] == "text" {
+            println!(
+                "{}",
+                segment["value"]
+                    .as_str()
+                    .expect("the value should be a str.")
+            );
+        } else {
+            println!("NICHT-TEXT Segment.");
+        }
+    }
 }

@@ -70,7 +70,7 @@ dependencies = [
 [[package]]
 name = "astralib"
 version = "0.1.1"
-source = "git+https://github.com/AstragoDETechnologies/astralib.git#7fede6bcdbd4686a6dca3d1fb2137928047c0d9a"
+source = "git+https://github.com/AstragoDETechnologies/astralib.git#cd9bb283fb9d5ae824180af7608c836dca5018de"
 dependencies = [
  "tracing",
  "tracing-subscriber",
