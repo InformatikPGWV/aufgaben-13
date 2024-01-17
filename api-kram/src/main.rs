@@ -115,7 +115,7 @@ async fn display_news(data: &Value, choice: usize) {
                     .expect("the value should be a str.")
             );
         } else {
-            println!("NICHT-TEXT Segment.");
+            println!("<NICHT-TEXT SEGMENT>");
         }
     }
 }
