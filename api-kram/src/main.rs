@@ -19,8 +19,12 @@ async fn main() {
 
     let data: Value = serde_json::from_str(&body).expect("The data should be in JSON.");
 
-    for i in 0..=3 {
-        let article = &data["news"][i];
-        println!("{} - {}", &article["title"], &article["firstSentence"]);
+    let news = data["news"].as_array().expect("News should be available");
+    for article in news {
+        println!(
+            "{} - {}\n",
+            article["title"].as_str().expect("The title should be available as a str."),
+            article["firstSentence"].as_str().expect("The first sentence should be available as a str.")
+        );
     }
 }
