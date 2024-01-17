@@ -1,7 +1,8 @@
-hidden = ["target", ".cargo"]
+hidden = ["target", ".cargo", ".git"]
+run = "echo Please use the shell to run a program."
 
 [nix]
-channel = "stable-24_01"
+channel = "stable-23_11"
 
 [packager]
 language = "rust"

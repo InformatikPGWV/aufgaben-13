@@ -9,6 +9,8 @@ members = [
     "api-kram",
 ]
 
+resolver = "2"
+
 # ===== PROFILES =====
 
 # Dev Profile
