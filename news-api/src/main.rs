@@ -6,8 +6,8 @@ use tracing::*;
 #[allow(unused_imports)]
 extern crate astralib;
 
-use serde_json::Value;
 use regex::Regex;
+use serde_json::Value;
 
 #[tokio::main(flavor = "current_thread")]
 async fn main() {
@@ -73,7 +73,7 @@ fn display_news_preview(data: &Value) {
 
 async fn display_news(data: &Value, choice: usize) {
     debug!("Downloading and displaying news article");
-    
+
     // Old code that opens browser
     if false {
         let url = &data["news"][choice - 1]["detailsweb"]
@@ -115,7 +115,11 @@ async fn display_news(data: &Value, choice: usize) {
 
     for segment in content {
         if segment["type"] == "text" {
-            let text = filter_html_segments(segment["value"].as_str().expect("The value should be a string."));
+            let text = filter_html_segments(
+                segment["value"]
+                    .as_str()
+                    .expect("The value should be a string."),
+            );
             println!("{}", text);
         } else {
             println!("<NON-TEXT SEGMENT>");
@@ -125,7 +129,9 @@ async fn display_news(data: &Value, choice: usize) {
 
 fn filter_html_segments(source: &str) -> String {
     debug!("Removing HTML Tags.");
-    let rx = Regex::new(r"<[^\/<>]+(?:\s[^<>]+)?(?:\s*\/)?>|<\/[^<>]+>").expect("Pre-defined regex expression should be valid");
+    // Regex expression that catches all HTML Tags
+    let rx = Regex::new(r"<[^\/<>]+(?:\s[^<>]+)?(?:\s*\/)?>|<\/[^<>]+>")
+        .expect("Pre-defined regex expression should be valid");
     let tags: Vec<&str> = rx.find_iter(source).map(|m| m.as_str()).collect();
 
     // TODO: Remove duplicates from tags vector, becaus the replace function replaces all occurrences.
@@ -134,6 +140,6 @@ fn filter_html_segments(source: &str) -> String {
     for tag in tags {
         cleaned = cleaned.replace(tag, "");
     }
-    
+
     cleaned
 }
