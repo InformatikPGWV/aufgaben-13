@@ -32,12 +32,11 @@ async fn main() {
             .expect("choice should be read.");
 
         if let Ok(choice) = choice.parse::<usize>() {
-
             if choice <= 0 {
                 error!("User selected article that is out of range.");
                 continue;
             }
-            
+
             if &choice
                 <= &data["news"]
                     .as_array()
