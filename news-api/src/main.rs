@@ -108,7 +108,7 @@ fn display_news(data: &Value, choice: usize) {
         .as_array()
         .expect("Content should be available.");
 
-    debug!("Content: {content:#?}");
+    debug!("Article content: {content:#?}");
 
     for segment in content {
         if segment["type"] == "text" {
