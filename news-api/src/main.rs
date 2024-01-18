@@ -10,8 +10,6 @@ use regex::Regex;
 use serde_json::Value;
 use std::collections::HashSet;
 
-// Use the current_thread runtime for the main function
-// #[tokio::main(flavor = "current_thread")]
 fn main() {
     // Initialize tracing (Logger)
     tracing_subscriber::fmt::init();
