@@ -8,6 +8,7 @@ extern crate astralib;
 
 use regex::Regex;
 use serde_json::Value;
+use std::collections::HashSet;
 
 #[tokio::main(flavor = "current_thread")]
 async fn main() {
@@ -29,7 +30,7 @@ async fn main() {
 
     loop {
         let choice = astralib::io::input("Welchen Artikel möchten Sie lesen?: ")
-            .expect("choice should be read.");
+            .expect("choice should be read.").trim().to_string();
 
         if let Ok(choice) = choice.parse::<usize>() {
             if choice <= 0 {
@@ -139,7 +140,8 @@ fn filter_html_segments(source: &str) -> String {
         .expect("Pre-defined regex expression should be valid");
     let tags: Vec<&str> = rx.find_iter(source).map(|m| m.as_str()).collect();
 
-    // TODO: Remove duplicates from tags vector, becaus the replace function replaces all occurrences.
+    // Turn Tags Vector into a hash set in order to remove duplicate values.
+    let tags: HashSet<_> = tags.into_iter().collect();
 
     let mut cleaned: String = String::from(source);
     for tag in tags {
