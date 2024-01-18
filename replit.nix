@@ -17,13 +17,14 @@
     pkgs.htop
     
     # other Dependencies
-      # Open SSL
+      # OpenSSL
         pkgs.openssl.dev
         pkgs.pkg-config
       # Console
         pkgs.powershell
   ];
   env = {
+    # OpenSSL
     PKG_CONFIG_PATH = "${pkgs.openssl.dev}/lib/pkgconfig";
   };
 }

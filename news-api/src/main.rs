@@ -7,6 +7,7 @@ use tracing::*;
 extern crate astralib;
 
 use serde_json::Value;
+use regex::Regex;
 
 #[tokio::main(flavor = "current_thread")]
 async fn main() {
@@ -71,6 +72,8 @@ fn display_news_preview(data: &Value) {
 }
 
 async fn display_news(data: &Value, choice: usize) {
+    debug!("Downloading and displaying news article");
+    
     // Old code that opens browser
     if false {
         let url = &data["news"][choice - 1]["detailsweb"]
@@ -88,10 +91,12 @@ async fn display_news(data: &Value, choice: usize) {
         }
     }
 
+    trace!("Finding URL of the requested article");
     let article_url = data["news"][choice - 1]["details"]
         .as_str()
         .expect("The URL should be available.");
 
+    trace!("Requesting Article JSON");
     let article_response = reqwest::get(article_url)
         .await
         .expect("The Request should return a Response.")
@@ -110,14 +115,25 @@ async fn display_news(data: &Value, choice: usize) {
 
     for segment in content {
         if segment["type"] == "text" {
-            println!(
-                "{}",
-                segment["value"]
-                    .as_str()
-                    .expect("the value should be a str.")
-            );
+            let text = filter_html_segments(segment["value"].as_str().expect("The value should be a string."));
+            println!("{}", text);
         } else {
-            println!("<NICHT-TEXT SEGMENT>");
+            println!("<NON-TEXT SEGMENT>");
         }
     }
+}
+
+fn filter_html_segments(source: &str) -> String {
+    debug!("Removing HTML Tags.");
+    let rx = Regex::new(r"<[^\/<>]+(?:\s[^<>]+)?(?:\s*\/)?>|<\/[^<>]+>").expect("Pre-defined regex expression should be valid");
+    let tags: Vec<&str> = rx.find_iter(source).map(|m| m.as_str()).collect();
+
+    // TODO: Remove duplicates from tags vector, becaus the replace function replaces all occurrences.
+
+    let mut cleaned: String = String::from(source);
+    for tag in tags {
+        cleaned = cleaned.replace(tag, "");
+    }
+    
+    cleaned
 }
