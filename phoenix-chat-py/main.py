@@ -82,8 +82,12 @@ def get_messages(chat, date):
         "date": date,
     }
     response = requests.post(chat.url, json=body)
+
     messages = []
 
+    if response.status_code != 200:
+        return messages
+    
     for message in response.json():
         id = message["id"]
         author = message["user"]
