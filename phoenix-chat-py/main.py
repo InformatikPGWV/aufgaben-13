@@ -114,7 +114,7 @@ def clear_screen():
 def pretty_print(chat, message):
     name = ""
     if message.author == chat.author:
-        name = "YOU"
+        name = "DU"
     else:
         name = message.author
 
