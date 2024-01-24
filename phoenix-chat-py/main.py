@@ -1,5 +1,5 @@
 import requests
-from datetime import datetime
+# from datetime import datetime
 import time
 from rich import print
 import os
@@ -50,9 +50,8 @@ def main():
 
       for message in messages:
           pretty_print(chat, message)
-        
+
       user_send_massage(chat)
-    
   
 def send_message(chat, message):
     body = {
