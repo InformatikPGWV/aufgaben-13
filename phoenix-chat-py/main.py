@@ -69,6 +69,8 @@ def user_send_massage(chat):
     chat.room = int(input("In welchem Raum möchtest du chatten?: "))
   elif nachricht.upper() == "!CHANGENAME":
     chat.author = input("Mit welchem Namen möchtest du chatten?: ")
+  elif nachricht.strip() == "":
+      pass
   else:
     send_message(chat, nachricht)
 
