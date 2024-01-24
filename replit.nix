@@ -6,6 +6,7 @@
 	pkgs.cargo
 	pkgs.cargo-edit
     pkgs.cargo-watch
+    pkgs.cargo-binstall
     pkgs.rust-analyzer
 
     # Python
