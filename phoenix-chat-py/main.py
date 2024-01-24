@@ -31,13 +31,6 @@ class Chat:
         self.room = room
         self.author = author
 
-    def set_room(self, room):
-        self.room = room
-
-    def set_name(self, name):
-        self.name = name
-
-
 class Message:
     def __init__(self, id, author, content):
         self.id = id
