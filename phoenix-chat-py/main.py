@@ -67,9 +67,10 @@ def user_send_massage(chat):
   nachricht = input("┎┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈୨♡୧┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┒\n Wie soll deine Nachricht lauten?: \n┖┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈୨♡୧┈┈┈┈┈┈┈┈┈┈┈┈┈┈┈┚\n")
   if nachricht.upper() == "!CHANGEROOM":
     chat.room = int(input("In welchem Raum möchtest du chatten?: "))
-  if nachricht.upper() == "!CHANGENAME":
+  elif nachricht.upper() == "!CHANGENAME":
     chat.author = input("Mit welchem Namen möchtest du chatten?: ")
-  send_message(chat, nachricht)
+  else:
+    send_message(chat, nachricht)
 
 def get_messages(chat, date):
     body = {
