@@ -5,25 +5,7 @@ import time
 from rich import print
 import os
 
-"""
-            Good Code
-░░░░░░░░░░░░░░░░░░░░░░█████████░░░░░░░░░
-░░███████░░░░░░░░░░███▒▒▒▒▒▒▒▒███░░░░░░░
-░░█▒▒▒▒▒▒█░░░░░░░███▒▒▒▒▒▒▒▒▒▒▒▒▒███░░░░
-░░░█▒▒▒▒▒▒█░░░░██▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██░░
-░░░░█▒▒▒▒▒█░░░██▒▒▒▒▒██▒▒▒▒▒▒██▒▒▒▒▒███░
-░░░░░█▒▒▒█░░░█▒▒▒▒▒▒████▒▒▒▒████▒▒▒▒▒▒██
-░░░█████████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██
-░░░█▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒▒▒▒▒▒█▒▒▒▒▒▒▒▒▒▒▒██
-░██▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒██▒▒▒▒▒▒▒▒▒▒██▒▒▒▒██
-██▒▒▒███████████▒▒▒▒▒██▒▒▒▒▒▒▒▒██▒▒▒▒▒██
-█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒▒▒████████▒▒▒▒▒▒▒██
-██▒▒▒▒▒▒▒▒▒▒▒▒▒▒█▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██░
-░█▒▒▒███████████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒██░░░
-░██▒▒▒▒▒▒▒▒▒▒████▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒█░░░░░
-░░████████████░░░█████████████████░░░░░░
-"""
-
+# ===== Classes
 
 class Chat:
     def __init__(self, url, room, author):
@@ -38,6 +20,8 @@ class Message:
         self.content = content
 
 
+# ===== Main Function
+
 def main():
     chat = initialize()
 
@@ -50,6 +34,10 @@ def main():
 
         user_send_massage(chat)
 
+
+# ====== Helper Functions
+
+# == Send Functions
 
 def send_message(chat, message):
     body = {
@@ -74,6 +62,8 @@ def user_send_massage(chat):
     else:
         send_message(chat, nachricht)
 
+
+# == Recieve Messages
 
 def get_messages(chat, date):
     body = {
@@ -105,6 +95,18 @@ def get_messages_from_last(chat, seconds):
     return get_messages(chat, date)
 
 
+def pretty_print(chat, message):
+    name = ""
+    if message.author == chat.author:
+        name = "DU"
+    else:
+        name = message.author
+
+    print(f"{name} --> {message.content}")
+
+
+# == Misc Functions
+
 def initialize():
     username = input("Wie heisst du?: ")
     room = int(input("In welchem Raum möchtest du chatten?: "))
@@ -120,33 +122,7 @@ def clear_screen():
         os.system("clear")
 
 
-def pretty_print(chat, message):
-    name = ""
-    if message.author == chat.author:
-        name = "DU"
-    else:
-        name = message.author
-
-    print(f"{name} --> {message.content}")
 
 
 if __name__ == "__main__":
     main()
-
-"""
-░░░░░░░░░░░░░░░░░░░░░▄▀░░▌
-░░░░░░░░░░░░░░░░░░░▄▀▐░░░▌
-░░░░░░░░░░░░░░░░▄▀▀▒▐▒░░░▌
-░░░░░▄▀▀▄░░░▄▄▀▀▒▒▒▒▌▒▒░░▌
-░░░░▐▒░░░▀▄▀▒▒▒▒▒▒▒▒▒▒▒▒▒█
-░░░░▌▒░░░░▒▀▄▒▒▒▒▒▒▒▒▒▒▒▒▒▀▄
-░░░░▐▒░░░░░▒▒▒▒▒▒▒▒▒▌▒▐▒▒▒▒▒▀▄
-░░░░▌▀▄░░▒▒▒▒▒▒▒▒▐▒▒▒▌▒▌▒▄▄▒▒▐
-░░░▌▌▒▒▀▒▒▒▒▒▒▒▒▒▒▐▒▒▒▒▒█▄█▌▒▒▌
-░▄▀▒▐▒▒▒▒▒▒▒▒▒▒▒▄▀█▌▒▒▒▒▒▀▀▒▒▐░░░▄
-▀▒▒▒▒▌▒▒▒▒▒▒▒▄▒▐███▌▄▒▒▒▒▒▒▒▄▀▀▀▀
-▒▒▒▒▒▐▒▒▒▒▒▄▀▒▒▒▀▀▀▒▒▒▒▄█▀░░▒▌▀▀▄▄
-▒▒▒▒▒▒█▒▄▄▀▒▒▒▒▒▒▒▒▒▒▒░░▐▒▀▄▀▄░░░░▀
-▒▒▒▒▒▒▒█▒▒▒▒▒▒▒▒▒▄▒▒▒▒▄▀▒▒▒▌░░▀▄
-▒▒▒▒▒▒▒▒▀▄▒▒▒▒▒▒▒▒▀▀▀▀▒▒▒▄▀
-"""
