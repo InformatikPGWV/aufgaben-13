@@ -18,3 +18,4 @@ start = "rust-analyzer"
 
 [languages.python]
 pattern = "**/*.py"
+

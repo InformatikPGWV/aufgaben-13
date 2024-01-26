@@ -8,11 +8,13 @@ import os
 
 # ===== Classes
 
+
 class Chat:
     def __init__(self, url, room, author):
         self.url = url
         self.room = room
         self.author = author
+
 
 class Message:
     def __init__(self, id, author, content):
@@ -22,6 +24,7 @@ class Message:
 
 
 # ===== Main Function
+
 
 def main():
     chat = initialize()
@@ -39,6 +42,7 @@ def main():
 # ====== Helper Functions
 
 # == Send Functions
+
 
 def send_message(chat, message):
     body = {
@@ -86,6 +90,7 @@ def user_send_massage(chat):
 
 # == Recieve Messages
 
+
 def get_messages(chat, date):
     body = {
         "action": "get",
@@ -98,7 +103,7 @@ def get_messages(chat, date):
 
     if response.status_code != 200:
         return messages
-    
+
     for message in response.json():
         id = message["id"]
         author = message["user"]
@@ -128,6 +133,7 @@ def pretty_print(chat, message):
 
 # == Misc Functions
 
+
 def initialize():
     username = input("Wie heisst du?: ")
     room = int(input("In welchem Raum möchtest du chatten?: "))
@@ -141,8 +147,6 @@ def clear_screen():
         os.system("cls")
     else:
         os.system("clear")
-
-
 
 
 if __name__ == "__main__":
