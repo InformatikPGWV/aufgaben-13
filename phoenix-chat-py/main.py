@@ -3,6 +3,7 @@ import requests
 # from datetime import datetime
 import time
 from rich import print
+from rich.progress import track
 import os
 
 # ===== Classes
@@ -65,6 +66,18 @@ def user_send_massage(chat):
             chat.author = args[1]
         else:
             chat.author = input("Mit welchem Namen möchtest du chatten?: ")
+    elif nachricht.upper().startswith("!SPAM"):
+        args = nachricht.split(" ")
+        msg = ""
+        rep = 0
+        if len(args) >= 3:
+            msg = args[1]
+            rep = int(args[2])
+        else:
+            msg = input("welche Nachricht möchtest du versenden?: ")
+            rep = int(input("Wie oft möchtest du diese Nachricht versenden?: "))
+        for i in track(range(rep), description="Sending Messages..."):
+            send_message(chat, msg)
     elif nachricht.strip() == "":
         pass
     else:
