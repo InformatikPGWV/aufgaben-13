@@ -5,6 +5,7 @@ import json
 
 # === Main Function ===
 
+
 def main():
     schuelerverzeichnis = []
 
@@ -36,7 +37,7 @@ def main():
 
         if eingabe == 5:
             export_students(schuelerverzeichnis)
-        
+
         if eingabe == 6:
             schuelerverzeichnis = import_students()
 
@@ -100,7 +101,9 @@ def schueler_loeschen(list):
     while True:
         namen_ausgeben(list)
 
-        print("\n[green]Geben Sie die ID des Schülers ein, den Sie löschen möchten.[/green]\n")
+        print(
+            "\n[green]Geben Sie die ID des Schülers ein, den Sie löschen möchten.[/green]\n"
+        )
         schueler_id = input("> ")
 
         try:
@@ -110,7 +113,7 @@ def schueler_loeschen(list):
             continue
 
         try:
-            del(list[schueler_id])
+            del list[schueler_id]
         except:
             print(
                 "[red]Diese ID existiert nicht. Es werden keine Änderungen vorgenommen."
@@ -123,11 +126,11 @@ def schueler_loeschen(list):
 
 def namen_ausgeben(list):
     for idx, schueler in enumerate(list):
-        print(f"{idx}: {schueler["name"]}")
+        print(f"{idx}: {schueler['name']}")
 
 
 def clear_screen():
-    if os.name == "nt": 
+    if os.name == "nt":
         os.system("cls")
     else:
         os.system("clear")
@@ -136,9 +139,10 @@ def clear_screen():
 def export_students(list):
     with open("data.json", "w") as file:
         json.dump(list, file, indent=2)
-    
+
     print("[yellow]Daten wurden exportiert.[/yellow]")
     time.sleep(0.5)
+
 
 def import_students():
     data = None
@@ -149,6 +153,7 @@ def import_students():
     time.sleep(0.5)
 
     return data
+
 
 if __name__ == "__main__":
     main()
