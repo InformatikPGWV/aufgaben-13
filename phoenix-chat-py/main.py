@@ -31,7 +31,7 @@ def main():
 
     while True:
         clear_screen()
-        messages = get_messages_from_last(chat, 60 * 60 * 24 * 14)
+        messages = get_messages_from_last(chat, 60 * 60 * 24 * 7)
 
         for message in messages:
             pretty_print(chat, message)
