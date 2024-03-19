@@ -1,5 +1,7 @@
 hidden = ["target", ".cargo", ".git"]
-run = "echo PLEASE USE THE SHELL TO RUN A COMMAND!"
+# run = "echo PLEASE USE THE SHELL TO RUN A COMMAND!"
+run = "cd ./schiffe-py && sh run.sh"
+
 
 [nix]
 channel = "stable-23_11"

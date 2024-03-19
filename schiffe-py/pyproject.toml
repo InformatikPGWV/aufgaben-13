@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "schiffe-py"
+version = "0.1.0"
+description = ""
+authors = ["Joshi, Scobo, Justi"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+requests = "^2.31.0"
+rich = "^13.7.0"
+pandas = "^2.2.0"
+numpy = "^1.26.4"
+retry-requests = "^2.0.0"
+requests-cache = "^1.2.0"
+openmeteo-requests = "^1.2.0"
+pyfiglet = "^1.0.2"
+
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.2.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
